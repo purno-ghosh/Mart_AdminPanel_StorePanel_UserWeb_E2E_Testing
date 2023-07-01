@@ -19,7 +19,8 @@ public class Login_Page_Element {
 
     @FindBy(xpath = "//button[@type='submit'][contains(.,'login')]")
     WebElement logbtn;
-
+    @FindBy(xpath = "//h1[contains(.,'Grocery Dashboard.')]")
+    WebElement Asrt_Dashboard;
 
     public Login_Page_Element(WebDriver driver) {
         this.driver = driver;
@@ -32,8 +33,6 @@ public class Login_Page_Element {
         passfld.sendKeys(password);
         logbtn.click();
         Thread.sleep(2000);
-        System.out.println(email);
-        System.out.println(password);
-        return null;
+        return Asrt_Dashboard.getText();
     }
 }

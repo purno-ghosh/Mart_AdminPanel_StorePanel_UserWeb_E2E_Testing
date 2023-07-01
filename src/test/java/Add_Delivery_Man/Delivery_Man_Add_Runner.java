@@ -21,7 +21,8 @@ public class Delivery_Man_Add_Runner extends Setup_Selenium {
         TestDelivery = new Delivery_Man_Adding_Element(driver);
         utils = new Utils(driver);
         utils.readJSONArray(0);
-        TestDelivery.Delivery_Man_Create(utils.getEmail(),utils.getPassword());
+      TestDelivery.Delivery_Man_Create(utils.getEmail(),utils.getPassword());
+
 
 
     }

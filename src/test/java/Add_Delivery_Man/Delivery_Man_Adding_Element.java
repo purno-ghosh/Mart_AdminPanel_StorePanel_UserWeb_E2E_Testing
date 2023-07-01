@@ -1,6 +1,7 @@
 package Add_Delivery_Man;
 
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -74,10 +75,6 @@ public class Delivery_Man_Adding_Element {
     @FindBy(xpath = "//input[contains(@id,'datatableSearch_')]")
     WebElement searchInput;
 
-    @FindBy(xpath = "(//i[contains(@class,'tio-visible-outlined')])[1]")
-
-    WebElement eyebtn;
-
     public Delivery_Man_Adding_Element(WebDriver driver) {
         this.driver = driver;
         PageFactory pageFactory;
@@ -105,7 +102,7 @@ public class Delivery_Man_Adding_Element {
         try (FileWriter fileWriter = new FileWriter(filePath, true)) {
             fileWriter.write("\n");
             objectMapper.writeValue(fileWriter, userData);
-            System.out.println("User data saved to user_data.json");
+            System.out.println("New Delivery man data saved to NewDeliver_data.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,8 +110,8 @@ public class Delivery_Man_Adding_Element {
         lastNameInput.sendKeys(lastName);
         emailInput.sendKeys(email2);
         phoneNumberInput.sendKeys(phoneNumber);
-        System.out.println(firstName);
-        System.out.println(lastName);
+        System.out.println("Delivery man First "+firstName);
+        System.out.println("Delivery man Last Name "+lastName);
         String K = firstName + " " + lastName;
         System.out.println(K);
 
@@ -141,10 +138,12 @@ public class Delivery_Man_Adding_Element {
         searchInput.sendKeys(K);
         Thread.sleep(3000);
         searchInput.sendKeys(Keys.ENTER);
-//        searchInput.clear();
-//        eyebtn.click();
-//        Thread.sleep(2000);
-
+// Wait for the table to load and locate the row containing the user
+        WebElement userRow = driver.findElement(By.xpath("//h5[@class='text-hover-primary mb-0'][contains(.,'" + K + "')]"));
+       userRow.getText();
+// Assert that the newly created delivery manis displayed
+        assert userRow.isDisplayed() : "The user row is not displayed in the table.";
+        System.out.println(userRow);
         return null;
 
     }

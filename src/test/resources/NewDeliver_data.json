@@ -1,30 +1,4 @@
-[{
-  "firstName": "Test2",
-  "lastName": "Last134",
-  "email": "test6733@example.com",
-  "phoneNumber": "1600009949"
-},
-{
-  "firstName": "Test271",
-  "lastName": "Last805",
-  "email": "test4462@example.com",
-  "phoneNumber": "1600000572"
-},
-{
-  "firstName": "Test239",
-  "lastName": "Last560",
-  "email": "test6590@example.com",
-  "phoneNumber": "1600004156"
-},
-{
-  "firstName": "Test963",
-  "lastName": "Last915",
-  "email": "test2314@example.com",
-  "phoneNumber": "1600000312"
-},
-{
-  "firstName": "Test204",
-  "lastName": "Last433",
-  "email": "test9194@example.com",
-  "phoneNumber": "1600008078"
-} ]
+
+{"firstName":"Test755","lastName":"Last75","email":"test8319@example.com","phoneNumber":"1600006706"}
+{"firstName":"Test296","lastName":"Last335","email":"test4453@example.com","phoneNumber":"1600006464"}
+{"firstName":"Test699","lastName":"Last165","email":"test7725@example.com","phoneNumber":"1600006826"}
