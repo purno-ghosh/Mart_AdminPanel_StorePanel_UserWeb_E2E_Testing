@@ -150,7 +150,7 @@ public class Store_Element {
 
         WebElement UploadImg = driver.findElement(By.xpath("//input[@type='file']"));
         // Home PC  C:\Users\\user\Desktop\New CV 24-03-2022\TestingIMG.png
-        // update from ofc laptop 1
+        // update from ofc laptop
         UploadImg.sendKeys("C:\\Users\\Lenovo\\Desktop\\Product_images\\Food\\Food_1.png");
         Tax_Field.sendKeys("10");
         Thread.sleep(2000);
