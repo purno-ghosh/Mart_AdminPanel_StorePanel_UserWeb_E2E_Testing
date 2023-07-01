@@ -2,7 +2,6 @@ package Add_New_Store;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -77,9 +76,6 @@ public class Store_Element {
     @FindBy(xpath = "//input[contains(@id,'maximum_delivery_time')]")
     WebElement Esti_maximum;
 
-    @FindBy(xpath = "//button[contains(.,'Done')]")
-    WebElement Esti_Done;
-
     @FindBy(id = "pac-input")
     WebElement Zone_Data;
 
@@ -101,8 +97,6 @@ public class Store_Element {
     @FindBy(id = "signupSrConfirmPassword")
     WebElement StConfirmpass;
 
-    @FindBy(xpath = "//a[@href='https://6ammart.sixamtech.com/dev/admin/store/list']")
-    WebElement RestaurantsList;
 
     @FindBy(id = "datatableSearch_")
     WebElement SarchStore;
@@ -112,7 +106,7 @@ public class Store_Element {
         PageFactory pageFactory;
         PageFactory.initElements(driver, this);
     }
-    public String Create_New_Store(String email, String password) throws IOException, ParseException, InterruptedException {
+    public String Create_New_Store(String email, String password) throws InterruptedException {
         emailfld.sendKeys(email);
         passfld.sendKeys(password);
         logbtn.click();
