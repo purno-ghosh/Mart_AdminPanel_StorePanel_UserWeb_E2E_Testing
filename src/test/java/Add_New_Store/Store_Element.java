@@ -152,6 +152,7 @@ public class Store_Element {
         // Home PC  C:\\Users\\user\\Desktop\\New CV 24-03-2022\\TestingIMG.png
         // If i want to run this code to my home pc then i have to remove one \ from uper location
         //C:\\Users\\Lenovo\\Desktop\\Product_images\\Food\\Food_1.png
+        //;;
         UploadImg.sendKeys("C:\\Users\\user\\Desktop\\New CV 24-03-2022\\TestingIMG.png");
         Tax_Field.sendKeys("10");
         Thread.sleep(2000);
