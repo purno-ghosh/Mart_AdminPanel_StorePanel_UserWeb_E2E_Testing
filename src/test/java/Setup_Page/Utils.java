@@ -19,10 +19,12 @@ import java.util.Date;
 public class Utils {
 
     WebDriver driver;
+
     public Utils(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     public void takeScreenShot() throws IOException {
         File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String time = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-aa").format(new Date());
@@ -48,8 +50,17 @@ public class Utils {
         this.password = password;
     }
 
+    public String getStorEmail() {
+        return storEmail;
+    }
+
+    public void setStorEmail(String storEmail) {
+        this.storEmail = storEmail;
+    }
+
     public String email;
     public String password;
+    public String storEmail;
 
     public void readJSONArray(int pos) throws IOException, ParseException, ParseException {
         String fileName = "./src/test/resources/login_credentials.json";
@@ -59,6 +70,17 @@ public class Utils {
         JSONObject jsonObj = (JSONObject) jsonArray.get(pos);
         setEmail((String) jsonObj.get("email"));
         setPassword((String) jsonObj.get("password"));
+
+    }
+
+    public void readJSONArrayStore(int pos) throws IOException, ParseException, ParseException {
+        String fileName = "./src/test/resources/Store_Saved_Data.json";
+        org.json.simple.parser.JSONParser jsonParser = new JSONParser();
+        Object obj = jsonParser.parse(new FileReader(fileName));
+        JSONArray jsonArray = (JSONArray) obj;
+        JSONObject jsonObj = (JSONObject) jsonArray.get(pos);
+        setStorEmail((String) jsonObj.get("storEmail"));
+
 
     }
 

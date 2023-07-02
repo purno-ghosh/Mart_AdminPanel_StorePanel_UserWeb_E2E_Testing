@@ -1,4 +1,5 @@
 package Add_New_Store;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -7,12 +8,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 public class Store_Element {
 
     private static List<New_Store_Data_Save> readDataFromFile() {
@@ -31,6 +34,7 @@ public class Store_Element {
 
         return new ArrayList<>(); // Return an empty list if there is an error
     }
+
     private static void saveDataToFile(List<New_Store_Data_Save> data) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -101,11 +105,24 @@ public class Store_Element {
     @FindBy(id = "datatableSearch_")
     WebElement SarchStore;
 
+
+    // New store login
+
+    @FindBy(id = "signinSrEmail")
+    WebElement StoreEmail;
+
+    @FindBy(id = "signupSrPassword")
+    WebElement StorePass;
+
+    @FindBy(xpath = "//button[@type='submit'][contains(.,'login')]")
+    WebElement StoreLoginBtn;
+
     public Store_Element(WebDriver driver) {
         this.driver = driver;
         PageFactory pageFactory;
         PageFactory.initElements(driver, this);
     }
+
     public String Create_New_Store(String email, String password) throws InterruptedException {
         emailfld.sendKeys(email);
         passfld.sendKeys(password);
@@ -189,10 +206,17 @@ public class Store_Element {
         System.out.println("Store Email :: " + storEmail);
         SarchStore.sendKeys(storeName);
         SarchStore.sendKeys(Keys.ENTER);
+        Thread.sleep(5000);
         return null;
     }
 
-
+    public String Login_New_Store(String storEmail) throws InterruptedException {
+        StoreEmail.sendKeys(storEmail);
+        StorePass.sendKeys("Pg@123456");
+        StoreLoginBtn.click();
+        System.out.println(" New Store Login With " + storEmail);
+        return null;
+    }
 
 }
 

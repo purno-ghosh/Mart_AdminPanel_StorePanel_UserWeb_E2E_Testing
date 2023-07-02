@@ -37,10 +37,13 @@ public class Setup_Selenium {
                 System.out.println(exception.toString());
             }
         }
-
+        driver.quit(); // Close the browser
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-//    @AfterTest
-//    public void logout(){
-//        driver.close();
-//    }
+    @AfterTest
+    public void logout(){
+        driver.quit();
+    }
 }
