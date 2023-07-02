@@ -128,11 +128,11 @@ public class Store_Element {
         String storeName = "StoreTest" + random.nextInt(1000);
         String firstName = "SrtTest" + random.nextInt(1000);
         String lastName = "Last" + random.nextInt(1000);
-        String email2 = "SrtTest" + random.nextInt(10000) + "@example.com";
+        String storEmail = "SrtTest" + random.nextInt(10000) + "@example.com";
         String phoneNumber = "160000" + String.format("%04d", random.nextInt(10000));
 
         // Create a new StoreData object
-        New_Store_Data_Save storeData = new New_Store_Data_Save(storeName, firstName, lastName, email2, phoneNumber);
+        New_Store_Data_Save storeData = new New_Store_Data_Save(storeName, firstName, lastName, storEmail, phoneNumber);
         // Read existing data from JSON file, if any
         List<New_Store_Data_Save> existingData = readDataFromFile();
         // Add new storeData to the existingData list
@@ -171,7 +171,7 @@ public class Store_Element {
         StFirstName.sendKeys(firstName);
         StlastName.sendKeys(lastName);
         Stphonenum.sendKeys(phoneNumber);
-        Stemail.sendKeys(email2);
+        Stemail.sendKeys(storEmail);
         Thread.sleep(2000);
         StPassword.sendKeys("Pg@123456");
         Thread.sleep(2000);
@@ -186,7 +186,7 @@ public class Store_Element {
         System.out.println("Store Name :: " + storeName);
         System.out.println("Store First Name :: " + firstName);
         System.out.println("Store Last Name :: " + lastName);
-        System.out.println("Store Email :: " + email2);
+        System.out.println("Store Email :: " + storEmail);
         SarchStore.sendKeys(storeName);
         SarchStore.sendKeys(Keys.ENTER);
         return null;

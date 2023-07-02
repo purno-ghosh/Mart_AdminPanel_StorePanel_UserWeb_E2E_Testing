@@ -5,14 +5,14 @@ public class New_Store_Data_Save {
     private String storeName;
     private String firstName;
     private String lastName;
-    private String email2;
+    private String storEmail;
     private String phoneNumber;
 
-    public New_Store_Data_Save(String storeName, String firstName, String lastName, String email2, String phoneNumber) {
+    public New_Store_Data_Save(String storeName, String firstName, String lastName, String storEmail, String phoneNumber) {
         this.storeName = storeName;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email2 = email2;
+        this.storEmail = storEmail;
         this.phoneNumber = phoneNumber;
     }
 
@@ -42,12 +42,13 @@ public class New_Store_Data_Save {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email2;
+
+    public String getStorEmail() {
+        return storEmail;
     }
 
-    public void setEmail(String email2) {
-        this.email2 = email2;
+    public void setStorEmail(String storEmail) {
+        this.storEmail = storEmail;
     }
 
     public String getPhoneNumber() {
