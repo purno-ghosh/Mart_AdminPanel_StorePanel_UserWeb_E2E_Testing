@@ -42,8 +42,8 @@ public class Setup_Selenium {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-    @AfterTest
-    public void logout(){
-        driver.quit();
-    }
+//    @AfterTest
+//    public void logout(){
+//        driver.quit();
+//    }
 }
