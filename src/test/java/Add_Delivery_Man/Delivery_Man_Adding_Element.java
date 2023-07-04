@@ -21,7 +21,7 @@ public class Delivery_Man_Adding_Element {
     private static List<Delivery_Man_User_Data_Save> readDataFromFile() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        File file = new File("./src/test/resources/NewDeliver_data.json");
+        File file = new File("./src/test/resources/All_json_File/NewDeliver_data.json");
 
         try {
             if (file.exists()) {
@@ -37,7 +37,7 @@ public class Delivery_Man_Adding_Element {
     private static void saveDataToFile(List<Delivery_Man_User_Data_Save> data) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        File file = new File("./src/test/resources/NewDeliver_data.json");
+        File file = new File("./src/test/resources/All_json_File/NewDeliver_data.json");
         try (FileWriter fileWriter = new FileWriter(file)) {
             objectMapper.writeValue(fileWriter, data);
             System.out.println("New Delivery man data saved to NewDeliver_data.json\"");
@@ -166,6 +166,7 @@ public class Delivery_Man_Adding_Element {
         // Wait for the table to load and locate the row containing the user
         WebElement userRow = driver.findElement(By.xpath("//h5[@class='text-hover-primary mb-0'][contains(.,'" + K + "')]"));
        userRow.getText();
+        Thread.sleep(3000);
        // Assert that the newly created delivery manis displayed
         assert userRow.isDisplayed() : "The user row is not displayed in the table.";
         System.out.println(userRow);

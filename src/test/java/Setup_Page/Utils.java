@@ -63,7 +63,7 @@ public class Utils {
     public String storEmail;
 
     public void readJSONArray(int pos) throws IOException, ParseException, ParseException {
-        String fileName = "./src/test/resources/login_credentials.json";
+        String fileName = "./src/test/resources/All_json_File/login_credentials.json";
         org.json.simple.parser.JSONParser jsonParser = new JSONParser();
         Object obj = jsonParser.parse(new FileReader(fileName));
         JSONArray jsonArray = (JSONArray) obj;
@@ -74,7 +74,7 @@ public class Utils {
     }
 
     public void readJSONArrayStore(int pos) throws IOException, ParseException, ParseException {
-        String fileName = "./src/test/resources/Store_Saved_Data.json";
+        String fileName = "./src/test/resources/All_json_File/Store_Saved_Data.json";
         org.json.simple.parser.JSONParser jsonParser = new JSONParser();
         Object obj = jsonParser.parse(new FileReader(fileName));
         JSONArray jsonArray = (JSONArray) obj;

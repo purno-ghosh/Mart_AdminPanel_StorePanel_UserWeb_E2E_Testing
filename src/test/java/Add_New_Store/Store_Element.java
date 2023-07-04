@@ -19,7 +19,7 @@ public class Store_Element {
     private static List<New_Store_Data_Save> readDataFromFile() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        File file = new File("./src/test/resources/Store_Saved_Data.json");
+        File file = new File("./src/test/resources/All_json_File/Store_Saved_Data.json");
 
         try {
             if (file.exists()) {
@@ -36,7 +36,7 @@ public class Store_Element {
     private static void saveDataToFile(List<New_Store_Data_Save> data) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        File file = new File("./src/test/resources/Store_Saved_Data.json");
+        File file = new File("./src/test/resources/All_json_File/Store_Saved_Data.json");
         try (FileWriter fileWriter = new FileWriter(file)) {
             objectMapper.writeValue(fileWriter, data);
             System.out.println("New Store data saved to Store_Saved_Data.json");
@@ -112,6 +112,23 @@ public class Store_Element {
 
     @FindBy(xpath = "//button[@type='submit'][contains(.,'login')]")
     WebElement StoreLoginBtn;
+
+    @FindBy(xpath = "//span[contains(.,'Items')]")
+    WebElement Itembtn;
+
+    @FindBy(xpath = "(//span[@class='text-truncate'][contains(.,'Add New')])[1]")
+    WebElement Addnewbtn;
+
+    @FindBy(id = "default_name")
+    WebElement NewItemNameFld;
+
+    @FindBy(xpath = "(//textarea[contains(@name,'description[]')])[1]")
+    WebElement NewItemDescriptionFld;
+
+    @FindBy(xpath = "//input[contains(@name,'price')]")
+    WebElement SelectPrice;
+    @FindBy(xpath = "//button[@type='submit'][contains(.,'Submit')]")
+    WebElement SubmitBtn;
 
     public Store_Element(WebDriver driver) {
         this.driver = driver;
@@ -213,12 +230,37 @@ public class Store_Element {
         return null;
 
     }
-
     public String Login_New_Store(String storEmail) throws InterruptedException {
         StoreEmail.sendKeys(storEmail);
         StorePass.sendKeys("Pg@123456");
         StoreLoginBtn.click();
         System.out.println(" New Store Login With " + storEmail);
+        Itembtn.click();
+        Addnewbtn.click();
+        NewItemNameFld.sendKeys("KFC Burger");
+        NewItemDescriptionFld.sendKeys("The KFC is the Best Restaurant");
+        Thread.sleep(2000);
+        WebElement UploadImg1 = driver.findElement(By.xpath("//input[@type='file']"));
+        UploadImg1.sendKeys("C:\\Users\\Lenovo\\Desktop\\Product_images\\Food\\Food_1.png");
+        Thread.sleep(3000);
+        WebElement UploadImg2 = driver.findElement(By.id("customFileEg1"));
+        UploadImg2.sendKeys("C:\\Users\\Lenovo\\Desktop\\Product_images\\Food\\Food_1.png");
+        Select selectCatagory = new Select(driver.findElement(By.id("category_id")));
+        selectCatagory.selectByVisibleText("Burger");
+        Thread.sleep(3000);
+        SelectPrice.clear();
+        SelectPrice.sendKeys("100");
+        Thread.sleep(3000);
+        WebElement time_input = driver.findElement(By.name("available_time_starts"));
+        time_input.clear();
+        time_input.sendKeys("12:30 AM");
+        time_input.sendKeys(Keys.ENTER);
+        WebElement time_input1 = driver.findElement(By.name("available_time_ends"));
+        time_input1.clear();
+        time_input1.sendKeys("12:30 AM");
+        time_input1.sendKeys(Keys.ENTER);
+        Thread.sleep(3000);
+        SubmitBtn.click();
         return null;
     }
 

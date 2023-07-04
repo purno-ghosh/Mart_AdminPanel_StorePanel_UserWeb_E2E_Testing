@@ -1,17 +1,13 @@
 package Add_New_Store;
-
 import Setup_Page.Setup_Selenium;
 import Setup_Page.Utils;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
-
 public class Store_Element_Run extends Setup_Selenium {
     Store_Element testStore;
     Utils utils;
-
-    @Test(enabled = true, priority = 0)
+    @Test(enabled = true , priority = 0)
     public void Create_New_Store() throws IOException, ParseException, InterruptedException {
         driver.get("https://6ammart.sixamtech.com/dev/login/admin");
         testStore = new Store_Element(driver);

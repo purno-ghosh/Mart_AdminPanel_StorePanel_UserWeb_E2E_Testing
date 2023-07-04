@@ -1,12 +1,8 @@
 package Add_Delivery_Man;
-
-import Admin_Login_Page.Login_Page_Element;
 import Setup_Page.Setup_Selenium;
 import Setup_Page.Utils;
 import org.json.simple.parser.ParseException;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 
 public class Delivery_Man_Add_Runner extends Setup_Selenium {

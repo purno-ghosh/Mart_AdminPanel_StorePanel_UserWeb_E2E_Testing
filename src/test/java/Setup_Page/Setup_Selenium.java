@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +23,11 @@ public class Setup_Selenium {
     }
     @AfterMethod
     public void ScreenShot(ITestResult result) throws IOException {
+        driver.quit(); // Close the browser
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
         if (ITestResult.FAILURE == result.getStatus()) {
             try {
                 Utils util = new Utils(driver);
@@ -30,13 +36,10 @@ public class Setup_Selenium {
                 System.out.println(exception.toString());
             }
         }
-        driver.quit(); // Close the browser
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
     }
-//    @AfterTest
-//    public void logout(){
-//        driver.quit();
-//    }
+    @AfterTest
+    public void logout(){
+        driver.quit();
+    }
 }
