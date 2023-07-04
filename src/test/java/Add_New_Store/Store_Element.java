@@ -174,7 +174,7 @@ public class Store_Element {
 
 
         // Home PC  C:\Users\\user\Desktop\New CV 24-03-2022\TestingIMG.png
-        //code update from office 04-07-2023 10:05 AM
+        //code update from office 04-07-2023 10:05 AMa
 
         WebElement UploadImg = driver.findElement(By.xpath("//input[@type='file']"));
         UploadImg.sendKeys("C:\\Users\\Lenovo\\Desktop\\Product_images\\Food\\Food_1.png");
