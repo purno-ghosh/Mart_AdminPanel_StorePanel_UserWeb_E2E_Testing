@@ -23,10 +23,10 @@ public class Setup_Selenium {
     }
     @AfterMethod
     public void ScreenShot(ITestResult result) throws IOException {
-        driver.quit(); // Close the browser
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        driver.quit(); // Close the browser
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         if (ITestResult.FAILURE == result.getStatus()) {
             try {
@@ -38,8 +38,8 @@ public class Setup_Selenium {
         }
 
     }
-    @AfterTest
-    public void logout(){
-        driver.quit();
-    }
+//    @AfterTest
+//    public void logout(){
+//        driver.quit();
+//    }
 }

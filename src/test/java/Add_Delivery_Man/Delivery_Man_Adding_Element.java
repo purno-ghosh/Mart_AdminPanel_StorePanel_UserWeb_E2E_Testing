@@ -166,7 +166,6 @@ public class Delivery_Man_Adding_Element {
         // Wait for the table to load and locate the row containing the user
         WebElement userRow = driver.findElement(By.xpath("//h5[@class='text-hover-primary mb-0'][contains(.,'" + K + "')]"));
        userRow.getText();
-        Thread.sleep(3000);
        // Assert that the newly created delivery manis displayed
         assert userRow.isDisplayed() : "The user row is not displayed in the table.";
         System.out.println(userRow);
