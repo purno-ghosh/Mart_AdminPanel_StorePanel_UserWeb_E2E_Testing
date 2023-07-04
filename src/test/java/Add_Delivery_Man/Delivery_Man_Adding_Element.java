@@ -1,5 +1,6 @@
 package Add_Delivery_Man;
-
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -9,16 +10,42 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Delivery_Man_Adding_Element {
+    private static List<Delivery_Man_User_Data_Save> readDataFromFile() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        File file = new File("./src/test/resources/NewDeliver_data.json");
 
+        try {
+            if (file.exists()) {
+                return objectMapper.readValue(file, new TypeReference<List<Delivery_Man_User_Data_Save>>() {
+                });
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new ArrayList<>(); // Return an empty list if there is an error
+    }
+    private static void saveDataToFile(List<Delivery_Man_User_Data_Save> data) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        File file = new File("./src/test/resources/NewDeliver_data.json");
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            objectMapper.writeValue(fileWriter, data);
+            System.out.println("New Delivery man data saved to NewDeliver_data.json\"");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     WebDriver driver;
-
-
     @FindBy(xpath = "//input[@id='signinSrEmail']")
     WebElement emailfld;
 
@@ -95,17 +122,14 @@ public class Delivery_Man_Adding_Element {
         String email2 = "test" + random.nextInt(10000) + "@example.com";
         String phoneNumber = "160000" + String.format("%04d", random.nextInt(10000));// Random 4-digit number appended to "123456"
 
-        // Save random values to JSON
-        Delivery_Man_User_Data_Save userData = new Delivery_Man_User_Data_Save(firstName, lastName, email2, phoneNumber);
-        ObjectMapper objectMapper = new ObjectMapper();
-        String filePath = "./src/test/resources/NewDeliver_data.json";
-        try (FileWriter fileWriter = new FileWriter(filePath, true)) {
-            fileWriter.write("\n");
-            objectMapper.writeValue(fileWriter, userData);
-            System.out.println("New Delivery man data saved to NewDeliver_data.json");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Delivery_Man_User_Data_Save userData= new Delivery_Man_User_Data_Save(firstName, lastName, email2, phoneNumber);
+        // Read existing data from JSON file, if any
+        List<Delivery_Man_User_Data_Save> existingData = readDataFromFile();
+        // Add new storeData to the existingData list
+        existingData.add(userData);
+        // Save the updated list to JSON file
+        saveDataToFile(existingData);
+
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastName);
         emailInput.sendKeys(email2);
@@ -138,10 +162,11 @@ public class Delivery_Man_Adding_Element {
         searchInput.sendKeys(K);
         Thread.sleep(3000);
         searchInput.sendKeys(Keys.ENTER);
-// Wait for the table to load and locate the row containing the user
+
+        // Wait for the table to load and locate the row containing the user
         WebElement userRow = driver.findElement(By.xpath("//h5[@class='text-hover-primary mb-0'][contains(.,'" + K + "')]"));
        userRow.getText();
-// Assert that the newly created delivery manis displayed
+       // Assert that the newly created delivery manis displayed
         assert userRow.isDisplayed() : "The user row is not displayed in the table.";
         System.out.println(userRow);
         return null;

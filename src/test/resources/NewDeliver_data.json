@@ -1,4 +1,6 @@
-
-{"firstName":"Test755","lastName":"Last75","email":"test8319@example.com","phoneNumber":"1600006706"}
-{"firstName":"Test296","lastName":"Last335","email":"test4453@example.com","phoneNumber":"1600006464"}
-{"firstName":"Test699","lastName":"Last165","email":"test7725@example.com","phoneNumber":"1600006826"}
+[ {
+  "firstName" : "Test613",
+  "lastName" : "Last899",
+  "email" : "test6519@example.com",
+  "phoneNumber" : "1600000507"
+} ]

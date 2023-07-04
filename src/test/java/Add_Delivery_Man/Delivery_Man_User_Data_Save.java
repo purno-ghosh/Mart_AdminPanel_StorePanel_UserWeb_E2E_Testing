@@ -1,7 +1,5 @@
 package Add_Delivery_Man;
-
 public class Delivery_Man_User_Data_Save {
-
     private String firstName;
     private String lastName;
     private String email;
@@ -15,7 +13,6 @@ public class Delivery_Man_User_Data_Save {
     }
 
     // Getters and setters
-
     public String getFirstName() {
         return firstName;
     }

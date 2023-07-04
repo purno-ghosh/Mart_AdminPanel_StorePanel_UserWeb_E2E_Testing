@@ -1,5 +1,4 @@
 package Add_New_Store;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -8,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -101,10 +99,8 @@ public class Store_Element {
     @FindBy(id = "signupSrConfirmPassword")
     WebElement StConfirmpass;
 
-
     @FindBy(id = "datatableSearch_")
     WebElement SarchStore;
-
 
     // New store login
 
@@ -159,10 +155,11 @@ public class Store_Element {
         Restaurant_Name.sendKeys(storeName);
         Store_Adress.sendKeys("Mirpur 10 6am Tech");
 
-        WebElement UploadImg = driver.findElement(By.xpath("//input[@type='file']"));
+
         // Home PC  C:\Users\\user\Desktop\New CV 24-03-2022\TestingIMG.png
-        // update from ofc laptopk
-        // Testing again600
+        //code update from office 04-07-2023 10:05 AM
+
+        WebElement UploadImg = driver.findElement(By.xpath("//input[@type='file']"));
         UploadImg.sendKeys("C:\\Users\\Lenovo\\Desktop\\Product_images\\Food\\Food_1.png");
         Tax_Field.sendKeys("10");
         Thread.sleep(2000);
@@ -207,7 +204,14 @@ public class Store_Element {
         SarchStore.sendKeys(storeName);
         SarchStore.sendKeys(Keys.ENTER);
         Thread.sleep(5000);
+        // Wait for the table to load and locate the row containing the user
+        WebElement storeRow = driver.findElement(By.xpath("//div[@class='text--title'][contains(.,'" + storeName + "')]"));
+        storeRow.getText();
+        // Assert that the newly created delivery manis displayed
+        assert storeRow.isDisplayed() : "The Store row is not displayed in the table.";
+        System.out.println(storeRow);
         return null;
+
     }
 
     public String Login_New_Store(String storEmail) throws InterruptedException {
