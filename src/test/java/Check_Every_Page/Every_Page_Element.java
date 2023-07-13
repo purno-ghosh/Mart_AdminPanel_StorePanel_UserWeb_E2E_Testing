@@ -1,10 +1,7 @@
 package Check_Every_Page;
 
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -66,7 +63,7 @@ public class Every_Page_Element {
         actions.keyDown(Keys.CONTROL).click(Vehicles_cat).keyUp(Keys.CONTROL).perform();
         driver.switchTo().window(getNewTabHandle(driver));
         String Vehicle_Title = driver.findElement(By.xpath("//h1[@class='page-header-title'][contains(.,'Vehicles category list')]")).getText();
-        System.out.println("TEST 02 Vehicles Category Is OK !  " + Vehicle_Title);
+        System.out.println("TEST 02 Vehicles Category Is OK !  " + Vehicle_Title + " ");
         Thread.sleep(2000);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
@@ -79,7 +76,7 @@ public class Every_Page_Element {
         actions1.keyDown(Keys.CONTROL).click(Add_Delivery).keyUp(Keys.CONTROL).perform();
         driver.switchTo().window(getNewTabHandle(driver));
         String Add_Delivery_Man = driver.findElement(By.xpath("//span[contains(.,'Add New Delivery Man')]")).getText();
-        System.out.println("TEST 03 DONE " + Add_Delivery_Man);
+        System.out.println("TEST 03 Add Delivery Man Page Is OK ! " + Add_Delivery_Man);
         Thread.sleep(2000);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
@@ -92,7 +89,7 @@ public class Every_Page_Element {
         actions2.keyDown(Keys.CONTROL).click(New_Delivery).keyUp(Keys.CONTROL).perform();
         driver.switchTo().window(getNewTabHandle(driver));
         String New_Delivery_Man = driver.findElement(By.xpath("//h1[@class='page-header-title'][contains(.,'New joining requests')]")).getText();
-        System.out.println("TEST 04 DONE " + New_Delivery_Man);
+        System.out.println("TEST 04 New Delivery Man Page is OK !  " + New_Delivery_Man);
         Thread.sleep(2000);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
@@ -105,7 +102,7 @@ public class Every_Page_Element {
         actions3.keyDown(Keys.CONTROL).click(Delivery_Man).keyUp(Keys.CONTROL).perform();
         driver.switchTo().window(getNewTabHandle(driver));
         String Delivery_Man_lIst = driver.findElement(By.xpath("(//span[contains(.,'Delivery Man')])[2]")).getText();
-        System.out.println("TEST 05 DONE " + Delivery_Man_lIst);
+        System.out.println("TEST 05 Delivery Man List Page is OK !  " + Delivery_Man_lIst);
         Thread.sleep(2000);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
@@ -118,7 +115,7 @@ public class Every_Page_Element {
         actions4.keyDown(Keys.CONTROL).click(Reviews).keyUp(Keys.CONTROL).perform();
         driver.switchTo().window(getNewTabHandle(driver));
         String Reviews_page = driver.findElement(By.xpath("//span[contains(.,'Delivery Man Reviews')]")).getText();
-        System.out.println("TEST 06 DONE " + Reviews_page);
+        System.out.println("TEST 06 Reviews Page is OK !  " + Reviews_page);
         Thread.sleep(2000);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
@@ -134,7 +131,7 @@ public class Every_Page_Element {
         String Customers_Page = driver.findElement(By.xpath("//span[contains(.,'Customers')]")).getText();
         softAssert.assertTrue(Customers_Page.contains("Customers"), "Customers page assertion failed");
         softAssert.assertAll();
-        System.out.println("TEST 07 DONE " + Customers_Page);
+        System.out.println("TEST 07 Customers Page is OK !  " + Customers_Page);
         Thread.sleep(2000);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
@@ -152,6 +149,7 @@ public class Every_Page_Element {
         String AddFund_Page = driver.findElement(By.xpath("(//span[contains(.,'Add Fund')])[2]")).getText();
         softAssert0.assertTrue(AddFund_Page.contains("Add Fund"), "Add Fund page assertion failed");
         softAssert0.assertAll();
+        System.out.println("TEST 08 Customers > Add Fund page is OK ! " + AddFund_Page);
         Thread.sleep(2000);
 
         //CUSTOMER MANAGEMENT // Customers // Report
@@ -159,14 +157,25 @@ public class Every_Page_Element {
         driver.findElement(By.xpath("(//span[@class='text-truncate text-capitalize'][contains(.,'Report')])[1]")).click();
         Thread.sleep(2000);
         String Report_Page = driver.findElement(By.xpath("//span[contains(.,'Customer Wallet Report')]")).getText();
-        System.out.println("TEST 08 DONE " + AddFund_Page + " Report " + Report_Page);
+        System.out.println("TEST 09 Customers > Report Page is OK !  " + Report_Page);
+
+        //CUSTOMER MANAGEMENT // Customers // Bonus
+        driver.findElement(By.xpath("//span[contains(.,'Bonus')]")).click();
+        Thread.sleep(2000);
+        String Wallet_Bonus_Page = driver.findElement(By.xpath("//span[contains(.,'Wallet bonus setup')]")).getText();
+        System.out.println("TEST 10 Customers > Wallet_Bonus_Page is OK !  " + Wallet_Bonus_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
         //CUSTOMER MANAGEMENT // Customers Loyalty Point
 
-        driver.findElement(By.xpath("//span[@class='navbar-vertical-aside-mini-mode-hidden-elements text-truncate  text-capitalize'][contains(.,'Customer Loyalty Point')]")).click();
+       WebElement loyalty_click= driver.findElement(By.xpath("//span[@class='navbar-vertical-aside-mini-mode-hidden-elements text-truncate  text-capitalize'][contains(.,'Customer Loyalty Point')]"));
+        // Scroll to the button element (optional)
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", loyalty_click);
+        js.executeScript("arguments[0].click();", loyalty_click);
         Thread.sleep(2000);
+
         WebElement Customer_Loyalty = driver.findElement(By.xpath("(//span[@class='text-truncate text-capitalize'][contains(.,'Report')])[2]"));
         Actions actions7 = new Actions(driver);
         actions7.keyDown(Keys.CONTROL).click(Customer_Loyalty).keyUp(Keys.CONTROL).perform();
@@ -176,7 +185,7 @@ public class Every_Page_Element {
         softAssert1.assertTrue(Loyalty_Page.contains("Customer Loyalty Point Report"), "Customers Loyalty Point page assertion failed");
         softAssert1.assertAll();
         Thread.sleep(2000);
-        System.out.println("TEST 09 DONE " + Loyalty_Page);
+        System.out.println("TEST 11 Customers Loyalty Point > Roport in Ok !  " + Loyalty_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -191,7 +200,7 @@ public class Every_Page_Element {
         softAssert2.assertTrue(Subscribed_Page.contains("Subscribed Emails"), "Customers Loyalty Point page assertion failed");
         softAssert2.assertAll();
         Thread.sleep(2000);
-        System.out.println("TEST 10 DONE " + Subscribed_Page);
+        System.out.println("TEST 12 Subscribed Emails page is OK !  " + Subscribed_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -206,7 +215,7 @@ public class Every_Page_Element {
         softAssert3.assertTrue(Messages_Page.contains("All Message Lists"), "Contact messages page assertion failed");
         softAssert3.assertAll();
         Thread.sleep(2000);
-        System.out.println("TEST 11 DONE " + Messages_Page);
+        System.out.println("TEST 13 Contact Messages is OK !  " + Messages_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -221,7 +230,7 @@ public class Every_Page_Element {
         softAssert4.assertTrue(Employee_Role_Page.contains("Employee Role"), "@@ Employee Role page assertion failed");
         softAssert4.assertAll();
         Thread.sleep(2000);
-        System.out.println("TEST 12 DONE " + Employee_Role_Page);
+        System.out.println("TEST 14 Employee Role is OK !  " + Employee_Role_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -238,13 +247,13 @@ public class Every_Page_Element {
         softAssert5.assertTrue(AddEmployee_Page.contains("General Information"), "General Information page assertion failed");
         softAssert5.assertAll();
         Thread.sleep(2000);
-
+        System.out.println("TEST 15 Employee Role is OK ! " + AddEmployee_Page);
         //CUSTOMER MANAGEMENT //Employees //Add New Employee // List
 
         driver.findElement(By.xpath("//a[@href='https://6ammart.sixamtech.com/dev/admin/users/employee/list']")).click();
         Thread.sleep(2000);
         String EmployeeList_Page = driver.findElement(By.xpath("//span[contains(.,'Employee List')]")).getText();
-        System.out.println("TEST 13 DONE " + EmployeeList_Page);
+        System.out.println("TEST 16 Employee Role List OK !  " + EmployeeList_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
