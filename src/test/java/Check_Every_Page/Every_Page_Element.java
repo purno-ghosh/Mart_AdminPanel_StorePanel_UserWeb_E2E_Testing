@@ -24,6 +24,7 @@ public class Every_Page_Element {
         }
         return parentHandle;
     }
+
     WebDriver driver;
 
     @FindBy(xpath = "//input[@id='signinSrEmail']")
@@ -38,15 +39,14 @@ public class Every_Page_Element {
     @FindBy(xpath = "//a[contains(.,'Users')]")
     WebElement Usertab;
 
-    public Every_Page_Element(WebDriver driver){
-        this.driver=driver;
+    public Every_Page_Element(WebDriver driver) {
+        this.driver = driver;
         PageFactory pageFactory;
         PageFactory.initElements(driver, this);
 
-
     }
 
-    public String Admin_Users_All_Page(String email, String password) throws IOException, ParseException, InterruptedException{
+    public String Admin_Users_All_Page(String email, String password) throws IOException, ParseException, InterruptedException {
         emailfld.sendKeys(email);
         passfld.sendKeys(password);
         logbtn.click();
@@ -169,7 +169,7 @@ public class Every_Page_Element {
 
         //CUSTOMER MANAGEMENT // Customers Loyalty Point
 
-       WebElement loyalty_click= driver.findElement(By.xpath("//span[@class='navbar-vertical-aside-mini-mode-hidden-elements text-truncate  text-capitalize'][contains(.,'Customer Loyalty Point')]"));
+        WebElement loyalty_click = driver.findElement(By.xpath("//span[@class='navbar-vertical-aside-mini-mode-hidden-elements text-truncate  text-capitalize'][contains(.,'Customer Loyalty Point')]"));
         // Scroll to the button element (optional)
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", loyalty_click);
@@ -256,8 +256,12 @@ public class Every_Page_Element {
         System.out.println("TEST 16 Employee Role List OK !  " + EmployeeList_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
+        return null;
+    }
 
+    public String Transactions_Reports_Tab(String email, String password) throws IOException, ParseException, InterruptedException{
 
+        driver.findElement(By.id("tourb-7")).click();
 
 
         return null;
