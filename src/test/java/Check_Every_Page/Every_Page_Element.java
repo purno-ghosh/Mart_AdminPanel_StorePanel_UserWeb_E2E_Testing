@@ -1,13 +1,11 @@
 package Check_Every_Page;
 
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-
-import java.io.IOException;
 
 public class Every_Page_Element {
     private static String getParentTabHandle(WebDriver driver) {
@@ -39,6 +37,13 @@ public class Every_Page_Element {
     @FindBy(xpath = "//a[contains(.,'Users')]")
     WebElement Usertab;
 
+// Setting_Tab
+
+    @FindBy(xpath = "(//span[contains(.,'Settings')])[1]")
+    WebElement Setting_btn;
+
+    @FindBy(xpath = "//a[@class='nav-link  active'][contains(.,'Business Information')]")
+    WebElement Businesss_Informaiton_Tab;
     public Every_Page_Element(WebDriver driver) {
         this.driver = driver;
         PageFactory pageFactory;
@@ -392,6 +397,33 @@ public class Every_Page_Element {
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
+        return null;
+    }
+
+    public String Setting_Page_Tab(String email, String password) throws InterruptedException {
+        emailfld.sendKeys(email);
+        passfld.sendKeys(password);
+        logbtn.click();
+        Thread.sleep(2000);
+        System.out.println("<< ! Starting Automation Testing for Transactions & Reports Tab ! >> ");
+        Setting_btn.click();
+        Thread.sleep(2000);
+
+        //Businesss_Informaiton
+        SoftAssert softAssert13 = new SoftAssert();
+        String Businesss_Informaiton=driver.findElement(By.xpath("//span[contains(.,'Company Information')]")).getText();
+        softAssert13.assertTrue(Businesss_Informaiton.contains("Company Information"), "Company Information page assertion failed");
+        softAssert13.assertAll();
+        System.out.println("TEST 26 Businesss_Informaiton Page is OK !  " + Businesss_Informaiton);
+
+        //Order Settings
+        driver.findElement(By.xpath("//a[contains(.,'Order settings')]")).click();
+        Thread.sleep(2000);
+//        SoftAssert softAssert14 = new SoftAssert();
+        String Order_Settings=driver.findElement(By.xpath("//h4[contains(.,'Order Cancelation Messages')]")).getText();
+        Assert.assertEquals(Order_Settings, "Order Cancelation Messages");
+//        softAssert14.assertEquals(Order_Settings,"Order Cancelation Message");
+        System.out.println("TEST 27 Order settings Page is OK !  " + Order_Settings);
         return null;
     }
 
