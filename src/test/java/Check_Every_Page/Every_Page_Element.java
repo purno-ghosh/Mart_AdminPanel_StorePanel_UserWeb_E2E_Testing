@@ -262,6 +262,7 @@ public class Every_Page_Element {
     public String Transactions_Reports_Tab(String email, String password) throws IOException, ParseException, InterruptedException{
 
         driver.findElement(By.id("tourb-7")).click();
+        driver.findElement(By.id("")).click();
 
 
         return null;
