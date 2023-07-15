@@ -330,7 +330,7 @@ public class Every_Page_Element {
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
-
+//
         // Transactions_Reports_Tab // REPORT & ANALYTICS // Store Wise Report
         WebElement Store_Wise_Report = driver.findElement(By.xpath("//span[contains(.,'Store Wise Report')]"));
         Actions actions15 = new Actions(driver);
