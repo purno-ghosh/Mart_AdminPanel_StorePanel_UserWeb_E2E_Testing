@@ -260,7 +260,7 @@ public class Every_Page_Element {
         return null;
     }
 
-    public String Transactions_Reports_Tab(String email, String password) throws InterruptedException{
+    public String Transactions_Reports_Tab(String email, String password) throws InterruptedException {
 //        emailfld.sendKeys(email);
 //        passfld.sendKeys(password);
 //        logbtn.click();
@@ -269,7 +269,7 @@ public class Every_Page_Element {
         System.out.println("<< ! Starting Automation Testing for Transactions & Reports Tab ! >> ");
 
         driver.findElement(By.id("tourb-7")).click();
-        String Withdraw_Requests= driver.findElement(By.xpath("//span[contains(.,'Store Withdraw Transaction')]")).getText();
+        String Withdraw_Requests = driver.findElement(By.xpath("//span[contains(.,'Store Withdraw Transaction')]")).getText();
         System.out.println("TEST 17 Withdraw Requests Page Is OK !  " + Withdraw_Requests);
 
         // Transactions_Reports_Tab //BUSINESS MANAGEMENT // Collect Cash
@@ -283,7 +283,7 @@ public class Every_Page_Element {
         softAssert5.assertTrue(Collect_Cash_Page.contains("Collect Cash Transaction"), "Collect Cash Transaction page failed");
         softAssert5.assertAll();
         Thread.sleep(5000);
-        System.out.println("TEST 18 Collect Cash is OK !  "+Collect_Cash_Page);
+        System.out.println("TEST 18 Collect Cash is OK !  " + Collect_Cash_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -298,7 +298,7 @@ public class Every_Page_Element {
         softAssert6.assertTrue(Delivery_Man_Payment_Page.contains("Provide Delivery Men Earning"), "Delivery_Man_Payments page assertion failed");
         softAssert6.assertAll();
         Thread.sleep(5000);
-        System.out.println("TEST 19 Delivery Men Payments Page is OK !  "+Delivery_Man_Payment_Page);
+        System.out.println("TEST 19 Delivery Men Payments Page is OK !  " + Delivery_Man_Payment_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -312,7 +312,7 @@ public class Every_Page_Element {
         softAssert7.assertTrue(Transection_Report_Page.contains("Transection Report"), "Transection Reports page assertion failed");
         softAssert7.assertAll();
         Thread.sleep(5000);
-        System.out.println("TEST 20 Transection Report Page is OK !  "+Transection_Report_Page);
+        System.out.println("TEST 20 Transection Report Page is OK !  " + Transection_Report_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -326,7 +326,7 @@ public class Every_Page_Element {
         softAssert8.assertTrue(Items_Report_Page.contains("Item Report"), "Item Report page assertion failed");
         softAssert8.assertAll();
         Thread.sleep(5000);
-        System.out.println("TEST 21 Item Report Page is OK !  "+Items_Report_Page);
+        System.out.println("TEST 21 Item Report Page is OK !  " + Items_Report_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -341,7 +341,7 @@ public class Every_Page_Element {
         softAssert9.assertTrue(Store_Wise_Report_Page.contains("Store Report"), "Store Report page assertion failed");
         softAssert9.assertAll();
         Thread.sleep(5000);
-        System.out.println("TEST 22 Store Wise Report Page is OK !  "+Store_Wise_Report_Page);
+        System.out.println("TEST 22 Store Wise Report Page is OK !  " + Store_Wise_Report_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -356,10 +356,9 @@ public class Every_Page_Element {
         softAssert9.assertTrue(Expense_Report_Page.contains("Expense Report"), "Expense Report page assertion failed");
         softAssert9.assertAll();
         Thread.sleep(5000);
-        System.out.println("TEST 23 Expense Report Page is OK !  "+Expense_Report_Page);
+        System.out.println("TEST 23 Expense Report Page is OK !  " + Expense_Report_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
-
 
 
         // Transactions_Reports_Tab // REPORT & ANALYTICS // Limited Stock Item
@@ -373,7 +372,7 @@ public class Every_Page_Element {
         softAssert11.assertTrue(Limited_Stock_Item_Page.contains("Low Stock Report"), "Limited Stock Item page assertion failed");
         softAssert11.assertAll();
         Thread.sleep(5000);
-        System.out.println("TEST 24 Limited Stock Item Page is OK !  "+Limited_Stock_Item_Page);
+        System.out.println("TEST 24 Limited Stock Item Page is OK !  " + Limited_Stock_Item_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
@@ -389,7 +388,7 @@ public class Every_Page_Element {
         softAssert12.assertTrue(Other_Report_Page.contains("Order Report"), "Order Report page assertion failed");
         softAssert12.assertAll();
         Thread.sleep(5000);
-        System.out.println("TEST 25 Order Report Page is OK !  "+Other_Report_Page);
+        System.out.println("TEST 25 Order Report Page is OK !  " + Other_Report_Page);
         driver.close();
         driver.switchTo().window(getParentTabHandle(driver));
 
