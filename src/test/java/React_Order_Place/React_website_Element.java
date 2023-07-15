@@ -10,33 +10,45 @@ import java.io.IOException;
 public class React_website_Element {
 
     WebDriver driver;
-   @FindBy(xpath = "//button[contains(.,'Accept')]")
-   WebElement Cooke_Accept;
 
-    @FindBy(css = "#__next > div.mui-style-6ovtiw > div:nth-child(2) > div.mui-style-rjxcs7 > div > div > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-3\\.9.MuiGrid-grid-sm-2\\.9.mui-style-1isx1jd > div > div > div > svg:nth-child(3)")
+
+    @FindBy(id = ":r1:-Locate-me")
     WebElement Locate_me_button;
 
-    @FindBy(xpath = "//p[contains(.,'Pick from map')]")
-    WebElement PickMap_btn;
+    @FindBy(xpath = "/html/body/div[3]/div[3]/div/div[2]/div/button[2]")
+    WebElement Location_permissing;
 
-    @FindBy(xpath = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation mui-style-1igru4k'][contains(.,'Pick Locations')]")
-    WebElement Pickloacation;
+    @FindBy(xpath = "//button[contains(.,'Accept')]")
+    WebElement Cooke_Accept;
+
+
+
+    @FindBy(css = "#\\:r2\\:")
+    WebElement Location_Search_field;
+
+    @FindBy(xpath = "//p[contains(.,'Explore')]")
+    WebElement Explore_btn;
+
     public React_website_Element(WebDriver driver) {
         this.driver = driver;
         PageFactory pageFactory;
         PageFactory.initElements(driver, this);
     }
 
-    public Object Order_Place() throws IOException, InterruptedException  {
-        Thread.sleep(3000);
+    public Object Order_Place() throws IOException, InterruptedException {
+
+//        Locate_me_button.click();
+//        Thread.sleep(3000);
+//        Location_permissing.click();
+//        Thread.sleep(3000);
         Cooke_Accept.click();
-      Thread.sleep(3000);
-        Locate_me_button.click();
         Thread.sleep(3000);
-        PickMap_btn.click();
-        Thread.sleep(3000);
-        Pickloacation.click();
-        Thread.sleep(3000);
+        Location_Search_field.sendKeys("4B Kemal Ataturk Ave, Dhaka 1212, Bangladesh");
+        Explore_btn.click();
+//        PickMap_btn.click();
+//        Thread.sleep(3000);
+//        Pickloacation.click();
+//        Thread.sleep(3000);
         return null;
 
     }
