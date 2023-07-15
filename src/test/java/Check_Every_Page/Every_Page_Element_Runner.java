@@ -23,7 +23,7 @@ public class Every_Page_Element_Runner extends Setup_Selenium {
         // System.out.println(VerifyDashboard);
     }
 
-    @Test(enabled = true , priority = 0)
+    @Test(enabled = true , priority = 1)
     public void Transactions_Reports_Tab() throws IOException, ParseException, InterruptedException {
         driver.get("https://6ammart.sixamtech.com/dev/login/admin");
         Check_all_Page = new Every_Page_Element(driver);
