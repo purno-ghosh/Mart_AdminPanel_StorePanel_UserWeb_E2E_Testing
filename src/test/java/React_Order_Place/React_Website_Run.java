@@ -13,14 +13,10 @@ public class React_Website_Run extends Setup_Selenium {
     Utils utils;
 
     @Test
-    public void Order_Place() throws IOException, ParseException, InterruptedException {
-        driver.get("https://6ammart-react.6amtech.com/");
+    public void Login_React_Website() throws IOException, ParseException, InterruptedException {
+        driver.get("http://178.128.117.184:3002/");
         Rect_test= new React_website_Element(driver);
-        Rect_test.Order_Place();
-
-//        Rect_test.React_Order_Place();
-
-
+        Rect_test.Login_React_Website();
 
     }
 
