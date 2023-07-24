@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
 
 import java.io.IOException;
 
@@ -18,7 +19,7 @@ public class Element_Admin_Store_Setting_Store_Config {
     @FindBy(xpath = "//input[contains(@id,'signupSrPassword')]")
     WebElement passfld;
 
-    @FindBy(xpath = "//button[@type='submit'][contains(.,'login')]")
+    @FindBy(xpath = "//button[@type='submit'][contains(.,'Login')]")
     WebElement logbtn;
 
     @FindBy(xpath = "//a[contains(.,'Users')]")
@@ -32,10 +33,6 @@ public class Element_Admin_Store_Setting_Store_Config {
     @FindBy(xpath = "//a[@href='https://6ammart.sixamtech.com/dev/admin/store/view/24/settings']")
     WebElement Online_Shopping_Setting;
 
-    // (//span[@class='toggle-switch-label'])[4]
-// @FindBy(xpath = "//span[@class='pr-2'][contains(.,'Home delivery')]")
-//    @FindBy(xpath = "//span[@class='toggle-switch-label'])[4]")
-//    WebElement Home_delivery_onOff_Toggle;
     public Element_Admin_Store_Setting_Store_Config(WebDriver driver) {
         this.driver = driver;
         PageFactory pageFactory;
@@ -66,29 +63,24 @@ public class Element_Admin_Store_Setting_Store_Config {
         Thread.sleep(2000);
         Online_Shopping_Store.click();
         Online_Shopping_Setting.click();
-//        Home_delivery_onOff_Toggle.click();
 
-//// Wait for the toggle button to be clickable (if needed)
-//        WebDriverWait wait = new WebDriverWait(driver, 10);
-//        WebElement toggleButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#vendor > div > div.card-body > div:nth-child(1) > div:nth-child(6) > div > label > span.toggle-switch-label")));
-//
-//// Get the class attribute of the toggle button
-//        String classAttribute = toggleButton.getAttribute("class");
-//
-//// Print the class attribute for debugging
-//        System.out.println("Class attribute: " + classAttribute);
-//
-//// Check if the toggle button is "on" or "off" based on its class attribute
-//        boolean isToggleButtonOn = classAttribute.contains("active");
-//
-//// Print the state of the toggle button
-//        System.out.println("Toggle button is " + (isToggleButtonOn ? "ON" : "OFF"));
+        // Locate the toggle button element using its XPath
+        WebElement toggleButton = driver.findElement(By.xpath("//span[contains(.,'Include POS in store panel')]"));
 
+// Get the value of the 'class' attribute
+        String classAttributeValue = toggleButton.getAttribute("class");
 
-        WebElement toggleButton = driver.findElement(By.xpath("(//span[contains(@class,'toggle-switch-label')])[6]"));
-        String ariaDisabledValue = toggleButton.getAttribute("aria-disabled");
-        boolean isToggleButtonOn = !(ariaDisabledValue != null && ariaDisabledValue.equals("true"));
-        System.out.println("Toggle button is " + (isToggleButtonOn ? "ON" : "OFF"));
+        if (classAttributeValue.equals("toggle-switch-label")) {
+            // If the class attribute value is "toggle-switch-label," the toggle button is OFF
+            System.out.println("Include POS In Store Panel Toggle button is OFF");
+        } else if (classAttributeValue.equals("toggle-switch-indicator")) {
+            // If the class attribute value is "toggle-switch-indicator," the toggle button is ON
+            System.out.println("Include POS In Store Panel Toggle button is ON");
+        } else {
+            // If the class attribute value is neither "toggle-switch-label" nor "toggle-switch-indicator," handle as needed
+            System.out.println("Unable to determine the state of the toggle button");
+        }
+
 
 
 
