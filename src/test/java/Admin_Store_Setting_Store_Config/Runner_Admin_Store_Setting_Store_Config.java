@@ -13,12 +13,12 @@ public class Runner_Admin_Store_Setting_Store_Config extends Setup_Selenium {
     Utils utils;
 
     @Test
-    public void Admin_Home_Delivery_ON() throws IOException, ParseException, InterruptedException {
+    public void Manage_Item_Setup_Check() throws IOException, ParseException, InterruptedException {
         driver.get("https://6ammart.sixamtech.com/dev/login/admin");
         TestDeliveryTakeAway = new Element_Admin_Store_Setting_Store_Config(driver);
         utils = new Utils(driver);
         utils.readJSONArray(0);
-        TestDeliveryTakeAway.Admin_Home_Delivery_ON(utils.getEmail(), utils.getPassword());
+        TestDeliveryTakeAway.Manage_Item_Setup_Check(utils.getEmail(), utils.getPassword());
 
     }
 

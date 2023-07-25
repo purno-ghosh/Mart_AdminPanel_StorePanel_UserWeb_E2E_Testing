@@ -2,6 +2,7 @@ package Admin_Store_Setting_Store_Config;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,6 +13,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.io.IOException;
 
 public class Element_Admin_Store_Setting_Store_Config {
+    String Storemail="ecommerce.store7@demo.com";
+    String Storepassword="12345678";
     WebDriver driver;
     @FindBy(xpath = "//input[@id='signinSrEmail']")
     WebElement emailfld;
@@ -39,7 +42,7 @@ public class Element_Admin_Store_Setting_Store_Config {
         PageFactory.initElements(driver, this);
     }
 
-    public String Admin_Home_Delivery_ON(String email, String password) throws IOException, ParseException, InterruptedException {
+    public String Manage_Item_Setup_Check(String email, String password) throws IOException, ParseException, InterruptedException {
         emailfld.sendKeys(email);
         passfld.sendKeys(password);
         logbtn.click();
@@ -58,29 +61,30 @@ public class Element_Admin_Store_Setting_Store_Config {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", StoreListButton);
         js.executeScript("arguments[0].click();", StoreListButton);
-        SarchStore.sendKeys("ecommerce.store7@demo.com");
+        SarchStore.sendKeys(Storemail);
         SarchStore.sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         Online_Shopping_Store.click();
         Online_Shopping_Setting.click();
 
-        // Locate the toggle button element using its XPath
-        WebElement toggleButton = driver.findElement(By.xpath("//span[contains(.,'Include POS in store panel')]"));
 
-// Get the value of the 'class' attribute
-        String classAttributeValue = toggleButton.getAttribute("class");
+        WebElement Manage_Item_Setup = driver.findElement(By.id("item_section"));
+        String checked_Manage_Item_Setup = Manage_Item_Setup.getAttribute("checked");
 
-        if (classAttributeValue.equals("toggle-switch-label")) {
-            // If the class attribute value is "toggle-switch-label," the toggle button is OFF
-            System.out.println("Include POS In Store Panel Toggle button is OFF");
-        } else if (classAttributeValue.equals("toggle-switch-indicator")) {
-            // If the class attribute value is "toggle-switch-indicator," the toggle button is ON
-            System.out.println("Include POS In Store Panel Toggle button is ON");
-        } else {
-            // If the class attribute value is neither "toggle-switch-label" nor "toggle-switch-indicator," handle as needed
-            System.out.println("Unable to determine the state of the toggle button");
+        if (checked_Manage_Item_Setup == null) {
+            System.out.println("Manage Item Setup Toggle button is OFF");
+            driver.quit();
+
+            // Launch a new driver
+            WebDriver StoreDriver = new ChromeDriver(); // or any other driver you are using
+            StoreDriver.get("https://6ammart.sixamtech.com/dev/login/store");
+            StoreDriver.findElement(By.id("signinSrEmail")).sendKeys(Storemail);
+            StoreDriver.findElement(By.id("signupSrPassword")).sendKeys(password);
         }
+        else {
 
+            System.out.println("Manage Item Setup Toggle button is ON");
+        }
 
 
 
