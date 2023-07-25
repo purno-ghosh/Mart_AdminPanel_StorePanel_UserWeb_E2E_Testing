@@ -83,4 +83,16 @@ public class Utils {
 
     }
 
+
+//    public void readJSONArray_Store(int pos) throws IOException, ParseException, ParseException {
+//        String fileName = "./src/test/resources/Store_Saved_data.json";
+//        org.json.simple.parser.JSONParser jsonParser = new JSONParser();
+//        Object obj = jsonParser.parse(new FileReader(fileName));
+//        JSONArray jsonArray = (JSONArray) obj;
+//        JSONObject jsonObj = (JSONObject) jsonArray.get(pos);
+//        setEmail((String) jsonObj.get("email"));
+//        setPassword((String) jsonObj.get("password"));
+//
+//    }
+
 }
